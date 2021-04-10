@@ -6,6 +6,7 @@ def formatline(traffline):
     line_data = traffline.strip().split('=')
     line_result = []
     day_counter = 0
+    #print(line_data[0])
     # line_data[0] is the month, of format traff-01-2009 (mm-yyyy)
     traff, month, year = line_data[0].split('-')
     days = line_data[1].split()
@@ -26,7 +27,7 @@ def parse_traffdata(content):
     result = []
     result_per_month = []
     for traffline in content:
-        if traffline.strip() == 'TRAFF-DATA':
+        if traffline.strip() == 'TRAFF-DATA' or traffline.strip() == "ÿ":
             continue
         month, month_down, month_up, line_result = formatline(traffline)
         result.append(line_result)
